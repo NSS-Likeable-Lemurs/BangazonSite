@@ -27,9 +27,16 @@
             <td>
                 @Html.DisplayFor(modelItem => item.ProductCount)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Products)
-            </td>
+            @foreach (Product product in item.Products)
+            {
+                <td>
+                    @Html.DisplayFor(modelItem => product.Title)
+                </td>
+            }
+
+
+
+
             <td>
                 <a asp-action="Edit" asp-route-id="@item.TypeId">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.TypeId">Details</a> |
