@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Bangazon.Migrations
 {
-    public partial class BangazonTables : Migration
+    public partial class InitialSetup : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -281,30 +281,31 @@ namespace Bangazon.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "StreetAddress", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "e99fa54b-b61e-4bed-9bea-db82f676c0ef", 0, "db2c70b5-cc8c-4b28-b150-07b756ab02d4", "admin@admin.com", true, "admin", "admin", false, null, "ADMIN@ADMIN.COM", "ADMIN@ADMIN.COM", "AQAAAAEAACcQAAAAEK3k1Zb1Kr5DL6Xb5Ac1IX7HJahuy1ypv4tGgtZ7oGAs+wicmJklM0xXf3tm0YSDgA==", null, false, "1282e228-378d-4998-956b-3a0d495ea594", "123 Infinity Way", false, "admin@admin.com" });
+                values: new object[] { "5a733c6d-0434-4265-bca3-389d03cafcbb", 0, "b01127f7-d803-4906-8e70-7732a2c07427", "admin@admin.com", true, "admin", "admin", false, null, "ADMIN@ADMIN.COM", "ADMIN@ADMIN.COM", "AQAAAAEAACcQAAAAEO06In/o2cAMUewPqnLERUOf4L0k9r2b8CUMupWoAPklUz9we6bIDTaO9Tglf3ymEw==", null, false, "15e8610f-2001-4793-a501-4da1f81666da", "123 Infinity Way", false, "admin@admin.com" });
 
             migrationBuilder.InsertData(
                 table: "ProductType",
                 columns: new[] { "ProductTypeId", "Label" },
-                values: new object[] { 1, "Sporting Goods" });
-
-            migrationBuilder.InsertData(
-                table: "ProductType",
-                columns: new[] { "ProductTypeId", "Label" },
-                values: new object[] { 2, "Appliances" });
+                values: new object[,]
+                {
+                    { 1, "Sporting Goods" },
+                    { 2, "Appliances" },
+                    { 3, "Electronics" },
+                    { 4, "Health" }
+                });
 
             migrationBuilder.InsertData(
                 table: "Order",
                 columns: new[] { "OrderId", "DateCompleted", "DateCreated", "PaymentTypeId", "UserId" },
-                values: new object[] { 1, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "e99fa54b-b61e-4bed-9bea-db82f676c0ef" });
+                values: new object[] { 1, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "5a733c6d-0434-4265-bca3-389d03cafcbb" });
 
             migrationBuilder.InsertData(
                 table: "PaymentType",
                 columns: new[] { "PaymentTypeId", "AccountNumber", "DateCreated", "Description", "UserId" },
                 values: new object[,]
                 {
-                    { 1, "86753095551212", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "American Express", "e99fa54b-b61e-4bed-9bea-db82f676c0ef" },
-                    { 2, "4102948572991", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Discover", "e99fa54b-b61e-4bed-9bea-db82f676c0ef" }
+                    { 1, "86753095551212", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "American Express", "5a733c6d-0434-4265-bca3-389d03cafcbb" },
+                    { 2, "4102948572991", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Discover", "5a733c6d-0434-4265-bca3-389d03cafcbb" }
                 });
 
             migrationBuilder.InsertData(
@@ -312,8 +313,31 @@ namespace Bangazon.Migrations
                 columns: new[] { "ProductId", "City", "DateCreated", "Description", "ImagePath", "Price", "ProductTypeId", "Quantity", "Title", "UserId" },
                 values: new object[,]
                 {
-                    { 1, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "It flies high", null, 2.99, 1, 100, "Kite", "e99fa54b-b61e-4bed-9bea-db82f676c0ef" },
-                    { 2, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "It rolls fast", null, 29.99, 2, 5, "Wheelbarrow", "e99fa54b-b61e-4bed-9bea-db82f676c0ef" }
+                    { 23, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "round and yellow", null, 29.99, 4, 5, "Tennis Ball", "5a733c6d-0434-4265-bca3-389d03cafcbb" },
+                    { 21, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "20 lb", null, 29.99, 4, 5, "Weights -20lb", "5a733c6d-0434-4265-bca3-389d03cafcbb" },
+                    { 20, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "8 lb", null, 29.99, 4, 5, "Weights -8 lb", "5a733c6d-0434-4265-bca3-389d03cafcbb" },
+                    { 19, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "15 lb", null, 29.99, 4, 5, "Weights -15 lb", "5a733c6d-0434-4265-bca3-389d03cafcbb" },
+                    { 18, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "10 lb", null, 29.99, 4, 5, "Weights -10 lb", "5a733c6d-0434-4265-bca3-389d03cafcbb" },
+                    { 17, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "5 lb", null, 29.99, 4, 5, "Weights -5lb", "5a733c6d-0434-4265-bca3-389d03cafcbb" },
+                    { 16, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Purple", null, 29.99, 4, 5, "Yoga Pants - Purple", "5a733c6d-0434-4265-bca3-389d03cafcbb" },
+                    { 15, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Green", null, 29.99, 4, 5, "Yoga Pants - Green", "5a733c6d-0434-4265-bca3-389d03cafcbb" },
+                    { 14, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Red", null, 29.99, 4, 5, "Yoga Pants - REd", "5a733c6d-0434-4265-bca3-389d03cafcbb" },
+                    { 13, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "White", null, 29.99, 4, 5, "Yoga Pants - White", "5a733c6d-0434-4265-bca3-389d03cafcbb" },
+                    { 12, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Black", null, 29.99, 4, 5, "Yoga Pants - Black", "5a733c6d-0434-4265-bca3-389d03cafcbb" },
+                    { 10, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Grape", null, 29.99, 4, 5, "Protein Powder- Grape ", "5a733c6d-0434-4265-bca3-389d03cafcbb" },
+                    { 24, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Sleek", null, 29.99, 4, 5, "Babolat Tennis Racket", "5a733c6d-0434-4265-bca3-389d03cafcbb" },
+                    { 9, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Vanilla", null, 29.99, 4, 5, "Protein Powder - Vanilla", "5a733c6d-0434-4265-bca3-389d03cafcbb" },
+                    { 8, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Chocolate", null, 29.99, 4, 5, "Protein Powder - Chocolate", "5a733c6d-0434-4265-bca3-389d03cafcbb" },
+                    { 7, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Not much RAM", null, 300.0, 3, 5, "HP", "5a733c6d-0434-4265-bca3-389d03cafcbb" },
+                    { 6, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Orange", null, 500.0, 3, 5, "Linux", "5a733c6d-0434-4265-bca3-389d03cafcbb" },
+                    { 5, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Black - Cute", null, 1000.0, 3, 5, "Dell", "5a733c6d-0434-4265-bca3-389d03cafcbb" },
+                    { 4, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "White TON OF RAM", null, 2000.0, 3, 5, "MacBook Pro", "5a733c6d-0434-4265-bca3-389d03cafcbb" },
+                    { 3, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Black- not much RAM", null, 1200.0, 3, 5, "MacBook Air", "5a733c6d-0434-4265-bca3-389d03cafcbb" },
+                    { 22, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "25 lb", null, 29.99, 2, 5, "Weights -25 lb", "5a733c6d-0434-4265-bca3-389d03cafcbb" },
+                    { 2, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "It rolls fast", null, 29.99, 2, 5, "Wheelbarrow", "5a733c6d-0434-4265-bca3-389d03cafcbb" },
+                    { 1, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "It flies high", null, 2.99, 1, 100, "Kite", "5a733c6d-0434-4265-bca3-389d03cafcbb" },
+                    { 11, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Strawberry", null, 29.99, 4, 5, "Protein Powder - Strawberry", "5a733c6d-0434-4265-bca3-389d03cafcbb" },
+                    { 25, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Rounded", null, 29.99, 4, 5, "Wilson Tennis Racket", "5a733c6d-0434-4265-bca3-389d03cafcbb" }
                 });
 
             migrationBuilder.InsertData(
