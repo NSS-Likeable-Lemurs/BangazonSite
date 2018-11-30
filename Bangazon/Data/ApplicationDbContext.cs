@@ -95,7 +95,9 @@ namespace Bangazon.Data {
                         Description = "It flies high",
                         Title = "Kite",
                         Quantity = 100,
-                        Price = 2.99
+                        Price = 2.99,
+                        City="Franklin",
+                        ImagePath="www.google.com"
                 },
                 new Product () {
                     ProductId = 2,
@@ -104,7 +106,9 @@ namespace Bangazon.Data {
                         Description = "It rolls fast",
                         Title = "Wheelbarrow",
                         Quantity = 5,
-                        Price = 29.99
+                        Price = 29.99,
+                        City = "Nashville",
+                        ImagePath = "www.google.com"
                 }
             );
 
