@@ -16,8 +16,10 @@ namespace Bangazon.Controllers
     {
         private readonly ApplicationDbContext _context;
 
+        /* Represents user data */
         private readonly UserManager<ApplicationUser> _userManager;
 
+        /* Retrieves the data for the current user from _userManager*/
         private Task<ApplicationUser> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
 
         public ProductsController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
@@ -31,6 +33,7 @@ namespace Bangazon.Controllers
         {
             var model = new ProductTypesViewModel();
 
+            /* Building a list of products. Joining t.ProductTypeId on p.ProductTypeId */
             model.GroupedProducts = await (
                 from t in _context.ProductType
                 join p in _context.Product

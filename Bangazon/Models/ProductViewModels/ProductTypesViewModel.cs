@@ -3,6 +3,7 @@ using Bangazon.Models;
 using Bangazon.Data;
 
 namespace Bangazon.Models.ProductViewModels
+    /* Creating a public list to show grouped products for the type of product */
 {
     public class ProductTypesViewModel
     {
