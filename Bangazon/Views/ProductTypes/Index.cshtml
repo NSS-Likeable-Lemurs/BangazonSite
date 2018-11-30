@@ -28,6 +28,9 @@
                 @Html.DisplayFor(modelItem => item.ProductCount)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.Products)
+            </td>
+            <td>
                 <a asp-action="Edit" asp-route-id="@item.TypeId">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.TypeId">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.TypeId">Delete</a>
