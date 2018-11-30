@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Bangazon.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20181129154157_BangazonTables")]
-    partial class BangazonTables
+    [Migration("20181130171411_InitialSetup")]
+    partial class InitialSetup
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -81,7 +81,7 @@ namespace Bangazon.Migrations
                     b.ToTable("AspNetUsers");
 
                     b.HasData(
-                        new { Id = "e99fa54b-b61e-4bed-9bea-db82f676c0ef", AccessFailedCount = 0, ConcurrencyStamp = "db2c70b5-cc8c-4b28-b150-07b756ab02d4", Email = "admin@admin.com", EmailConfirmed = true, FirstName = "admin", LastName = "admin", LockoutEnabled = false, NormalizedEmail = "ADMIN@ADMIN.COM", NormalizedUserName = "ADMIN@ADMIN.COM", PasswordHash = "AQAAAAEAACcQAAAAEK3k1Zb1Kr5DL6Xb5Ac1IX7HJahuy1ypv4tGgtZ7oGAs+wicmJklM0xXf3tm0YSDgA==", PhoneNumberConfirmed = false, SecurityStamp = "1282e228-378d-4998-956b-3a0d495ea594", StreetAddress = "123 Infinity Way", TwoFactorEnabled = false, UserName = "admin@admin.com" }
+                        new { Id = "5a733c6d-0434-4265-bca3-389d03cafcbb", AccessFailedCount = 0, ConcurrencyStamp = "b01127f7-d803-4906-8e70-7732a2c07427", Email = "admin@admin.com", EmailConfirmed = true, FirstName = "admin", LastName = "admin", LockoutEnabled = false, NormalizedEmail = "ADMIN@ADMIN.COM", NormalizedUserName = "ADMIN@ADMIN.COM", PasswordHash = "AQAAAAEAACcQAAAAEO06In/o2cAMUewPqnLERUOf4L0k9r2b8CUMupWoAPklUz9we6bIDTaO9Tglf3ymEw==", PhoneNumberConfirmed = false, SecurityStamp = "15e8610f-2001-4793-a501-4da1f81666da", StreetAddress = "123 Infinity Way", TwoFactorEnabled = false, UserName = "admin@admin.com" }
                     );
                 });
 
@@ -111,7 +111,7 @@ namespace Bangazon.Migrations
                     b.ToTable("Order");
 
                     b.HasData(
-                        new { OrderId = 1, DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), UserId = "e99fa54b-b61e-4bed-9bea-db82f676c0ef" }
+                        new { OrderId = 1, DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), UserId = "5a733c6d-0434-4265-bca3-389d03cafcbb" }
                     );
                 });
 
@@ -167,8 +167,8 @@ namespace Bangazon.Migrations
                     b.ToTable("PaymentType");
 
                     b.HasData(
-                        new { PaymentTypeId = 1, AccountNumber = "86753095551212", DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "American Express", UserId = "e99fa54b-b61e-4bed-9bea-db82f676c0ef" },
-                        new { PaymentTypeId = 2, AccountNumber = "4102948572991", DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "Discover", UserId = "e99fa54b-b61e-4bed-9bea-db82f676c0ef" }
+                        new { PaymentTypeId = 1, AccountNumber = "86753095551212", DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "American Express", UserId = "5a733c6d-0434-4265-bca3-389d03cafcbb" },
+                        new { PaymentTypeId = 2, AccountNumber = "4102948572991", DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "Discover", UserId = "5a733c6d-0434-4265-bca3-389d03cafcbb" }
                     );
                 });
 
@@ -212,8 +212,31 @@ namespace Bangazon.Migrations
                     b.ToTable("Product");
 
                     b.HasData(
-                        new { ProductId = 1, DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "It flies high", Price = 2.99, ProductTypeId = 1, Quantity = 100, Title = "Kite", UserId = "e99fa54b-b61e-4bed-9bea-db82f676c0ef" },
-                        new { ProductId = 2, DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "It rolls fast", Price = 29.99, ProductTypeId = 2, Quantity = 5, Title = "Wheelbarrow", UserId = "e99fa54b-b61e-4bed-9bea-db82f676c0ef" }
+                        new { ProductId = 1, DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "It flies high", Price = 2.99, ProductTypeId = 1, Quantity = 100, Title = "Kite", UserId = "5a733c6d-0434-4265-bca3-389d03cafcbb" },
+                        new { ProductId = 2, DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "It rolls fast", Price = 29.99, ProductTypeId = 2, Quantity = 5, Title = "Wheelbarrow", UserId = "5a733c6d-0434-4265-bca3-389d03cafcbb" },
+                        new { ProductId = 3, DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "Black- not much RAM", Price = 1200.0, ProductTypeId = 3, Quantity = 5, Title = "MacBook Air", UserId = "5a733c6d-0434-4265-bca3-389d03cafcbb" },
+                        new { ProductId = 4, DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "White TON OF RAM", Price = 2000.0, ProductTypeId = 3, Quantity = 5, Title = "MacBook Pro", UserId = "5a733c6d-0434-4265-bca3-389d03cafcbb" },
+                        new { ProductId = 5, DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "Black - Cute", Price = 1000.0, ProductTypeId = 3, Quantity = 5, Title = "Dell", UserId = "5a733c6d-0434-4265-bca3-389d03cafcbb" },
+                        new { ProductId = 6, DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "Orange", Price = 500.0, ProductTypeId = 3, Quantity = 5, Title = "Linux", UserId = "5a733c6d-0434-4265-bca3-389d03cafcbb" },
+                        new { ProductId = 7, DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "Not much RAM", Price = 300.0, ProductTypeId = 3, Quantity = 5, Title = "HP", UserId = "5a733c6d-0434-4265-bca3-389d03cafcbb" },
+                        new { ProductId = 8, DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "Chocolate", Price = 29.99, ProductTypeId = 4, Quantity = 5, Title = "Protein Powder - Chocolate", UserId = "5a733c6d-0434-4265-bca3-389d03cafcbb" },
+                        new { ProductId = 9, DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "Vanilla", Price = 29.99, ProductTypeId = 4, Quantity = 5, Title = "Protein Powder - Vanilla", UserId = "5a733c6d-0434-4265-bca3-389d03cafcbb" },
+                        new { ProductId = 10, DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "Grape", Price = 29.99, ProductTypeId = 4, Quantity = 5, Title = "Protein Powder- Grape ", UserId = "5a733c6d-0434-4265-bca3-389d03cafcbb" },
+                        new { ProductId = 11, DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "Strawberry", Price = 29.99, ProductTypeId = 4, Quantity = 5, Title = "Protein Powder - Strawberry", UserId = "5a733c6d-0434-4265-bca3-389d03cafcbb" },
+                        new { ProductId = 12, DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "Black", Price = 29.99, ProductTypeId = 4, Quantity = 5, Title = "Yoga Pants - Black", UserId = "5a733c6d-0434-4265-bca3-389d03cafcbb" },
+                        new { ProductId = 13, DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "White", Price = 29.99, ProductTypeId = 4, Quantity = 5, Title = "Yoga Pants - White", UserId = "5a733c6d-0434-4265-bca3-389d03cafcbb" },
+                        new { ProductId = 14, DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "Red", Price = 29.99, ProductTypeId = 4, Quantity = 5, Title = "Yoga Pants - REd", UserId = "5a733c6d-0434-4265-bca3-389d03cafcbb" },
+                        new { ProductId = 15, DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "Green", Price = 29.99, ProductTypeId = 4, Quantity = 5, Title = "Yoga Pants - Green", UserId = "5a733c6d-0434-4265-bca3-389d03cafcbb" },
+                        new { ProductId = 16, DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "Purple", Price = 29.99, ProductTypeId = 4, Quantity = 5, Title = "Yoga Pants - Purple", UserId = "5a733c6d-0434-4265-bca3-389d03cafcbb" },
+                        new { ProductId = 17, DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "5 lb", Price = 29.99, ProductTypeId = 4, Quantity = 5, Title = "Weights -5lb", UserId = "5a733c6d-0434-4265-bca3-389d03cafcbb" },
+                        new { ProductId = 18, DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "10 lb", Price = 29.99, ProductTypeId = 4, Quantity = 5, Title = "Weights -10 lb", UserId = "5a733c6d-0434-4265-bca3-389d03cafcbb" },
+                        new { ProductId = 19, DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "15 lb", Price = 29.99, ProductTypeId = 4, Quantity = 5, Title = "Weights -15 lb", UserId = "5a733c6d-0434-4265-bca3-389d03cafcbb" },
+                        new { ProductId = 20, DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "8 lb", Price = 29.99, ProductTypeId = 4, Quantity = 5, Title = "Weights -8 lb", UserId = "5a733c6d-0434-4265-bca3-389d03cafcbb" },
+                        new { ProductId = 21, DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "20 lb", Price = 29.99, ProductTypeId = 4, Quantity = 5, Title = "Weights -20lb", UserId = "5a733c6d-0434-4265-bca3-389d03cafcbb" },
+                        new { ProductId = 22, DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "25 lb", Price = 29.99, ProductTypeId = 2, Quantity = 5, Title = "Weights -25 lb", UserId = "5a733c6d-0434-4265-bca3-389d03cafcbb" },
+                        new { ProductId = 23, DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "round and yellow", Price = 29.99, ProductTypeId = 4, Quantity = 5, Title = "Tennis Ball", UserId = "5a733c6d-0434-4265-bca3-389d03cafcbb" },
+                        new { ProductId = 24, DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "Sleek", Price = 29.99, ProductTypeId = 4, Quantity = 5, Title = "Babolat Tennis Racket", UserId = "5a733c6d-0434-4265-bca3-389d03cafcbb" },
+                        new { ProductId = 25, DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "Rounded", Price = 29.99, ProductTypeId = 4, Quantity = 5, Title = "Wilson Tennis Racket", UserId = "5a733c6d-0434-4265-bca3-389d03cafcbb" }
                     );
                 });
 
@@ -233,7 +256,9 @@ namespace Bangazon.Migrations
 
                     b.HasData(
                         new { ProductTypeId = 1, Label = "Sporting Goods" },
-                        new { ProductTypeId = 2, Label = "Appliances" }
+                        new { ProductTypeId = 2, Label = "Appliances" },
+                        new { ProductTypeId = 3, Label = "Electronics" },
+                        new { ProductTypeId = 4, Label = "Health" }
                     );
                 });
 
