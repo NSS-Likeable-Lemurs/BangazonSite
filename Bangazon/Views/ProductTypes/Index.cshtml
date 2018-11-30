@@ -1,10 +1,10 @@
 ﻿@model Bangazon.Models.ProductViewModels.ProductTypeViewModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Product Types";
 }
 
-<h2>Index</h2>
+<h2>Product Types</h2>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -19,30 +19,35 @@
         </tr>
     </thead>
     <tbody>
+  @* Foreach loop to go through the GP model and return name and count *@
 @foreach (var item in Model.GroupedProducts) {
+    // First table row
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.TypeName)
             </td>
+            
             <td>
-                @Html.DisplayFor(modelItem => item.ProductCount)
+                <strong> @Html.DisplayFor(modelItem => item.ProductCount)</strong>
             </td>
+            <p style="display: flex; justify-content:center;">
+        </tr>
+        // Second table row
+        // Foreach loop to loop through the Product list inside of GP model
+        <tr>
             @foreach (Product product in item.Products)
             {
+                <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => product.Title)
+                    <ul>
+                        <li style="display: flex; justify-content:center;"> <a asp-action="Details" asp-route-id="@item.TypeId">   @Html.DisplayFor(modelItem => product.Title)</a> </li>
+                    </ul>
                 </td>
+                    </tr>
             }
-
-
-
-
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.TypeId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.TypeId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.TypeId">Delete</a>
-            </td>
         </tr>
+
+
 }
     </tbody>
 </table>
