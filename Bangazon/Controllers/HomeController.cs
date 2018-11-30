@@ -18,7 +18,16 @@ namespace Bangazon.Controllers
         {
             _context = context;
         }
-
+        /**
+ * Class: HomeController
+ * Purpose: Define all methods that interract with the User table in the database, and routes to create
+            routes to create new users.
+ * Author: Helen Chalmers
+ * Methods:
+ *   HomeController(BangazonDeltaContext) - Constructor that displays 20 newest made products that are linked to their respective product detail page.
+ *   uses OrderByDescending and Take methods.
+ *  
+ */
         // GET: Cohorts
         public async Task<IActionResult> Index()
         {
