@@ -9,35 +9,34 @@
 
 @*<h4>ProductType</h4>*@
 <hr />
-<thead>
-    @foreach (var item in Model.Products)
-    {
+
+    
         
-            <div class="col-md-3">
-                @Html.DisplayNameFor(model => item.Title)
+            <div class="col-md-4">
+                Title
             </div>
-            <div class="col-md-7">
-                    @Html.DisplayNameFor(model => item.Quantity)
+            <div class="col-md-4">
+                    Quantity
                 </div>
-                <div class="col-md-2">
-                    @Html.DisplayNameFor(model => item.Price)
+                <div class="col-md-4">
+                    Price
                 </div>
-    }
-</thead>
-<tbody>
+    
+
+
     @foreach (var item in Model.Products)
     {
         
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <a asp-action="Details" asp-route-id="@item.ProductId">@Html.DisplayFor(modelItem => item.Title)</a>
             </div>
-            <div class="col-md-7">
+            <div class="col-md-4">
                 @Html.DisplayFor(modelItem => item.Quantity)
             </div>
-            <div class="col-md-2">
+            <div class="col-md-4">
                 @Html.DisplayFor(modelItem => item.Price)
             </div>
         
     }
-</tbody>
+
 
