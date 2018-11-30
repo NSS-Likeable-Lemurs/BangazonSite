@@ -19,20 +19,13 @@
         </tr>
     </thead>
     <tbody>
+         @*created a for each loop below that creates a hyperlink for all ProductTypes and leads to the details page of each productTypeID*@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @*@Html.DisplayFor(modelItem => item.Label)*@
                 <a asp-action="Details" asp-route-id="@item.ProductTypeId">@Html.DisplayFor(modelItem => item.Label)</a>
-            
-              
-            
             </td>
-            @*<td>
-            <a asp-action="Edit" asp-route-id="@item.ProductTypeId">Edit</a> |
-            <a asp-action="Details" asp-route-id="@item.ProductTypeId">Details</a> |
-            <a asp-action="Delete" asp-route-id="@item.ProductTypeId">Delete</a>
-        </td>*@
+          
         </tr>
 }
     </tbody>

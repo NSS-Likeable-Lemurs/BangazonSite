@@ -32,7 +32,7 @@ namespace Bangazon.Controllers
             {
                 return NotFound();
             }
-
+ // Under productType .Include Products so that It will be included in the details page.
             var productType = await _context.ProductType
                 .Include(p => p.Products)
                 .FirstOrDefaultAsync(m => m.ProductTypeId == id);
