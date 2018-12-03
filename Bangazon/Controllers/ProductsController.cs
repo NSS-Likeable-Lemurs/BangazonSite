@@ -19,7 +19,7 @@ namespace Bangazon.Controllers
         /* Represents user data */
         private readonly UserManager<ApplicationUser> _userManager;
 
-        /* Retrieves the data for the current user from _userManager*/
+        /* Retrieves the data for the current user from _userManager */
         private Task<ApplicationUser> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
 
         public ProductsController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
