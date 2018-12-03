@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Bangazon.Data;
 using Bangazon.Models;
+using System.Data;
+using Microsoft.AspNetCore.Identity;
 
 namespace Bangazon.Controllers
 {
@@ -14,16 +16,34 @@ namespace Bangazon.Controllers
     {
         private readonly ApplicationDbContext _context;
 
-        public PaymentTypesController(ApplicationDbContext context)
+        /* Represents user data */
+        private readonly UserManager<ApplicationUser> _userManager;
+
+        /* Retrieves the data for the current user from _userManager*/
+        private Task<ApplicationUser> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
+
+        public PaymentTypesController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
         {
+            _userManager = userManager;
             _context = context;
         }
 
         // GET: PaymentTypes
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.PaymentType.Include(p => p.User);
-            return View(await applicationDbContext.ToListAsync());
+            var model = new PaymentType();
+
+            /* Building a list of products. Joining t.ProductTypeId on p.ProductTypeId */
+         IEnumerable<PaymentType> paymenttype = await (
+                from pyt in _context.PaymentType
+               
+                select new PaymentType
+                {
+                    PaymentTypeId = pyt.PaymentTypeId,
+                    Description = pyt.Description,
+                }).ToListAsync();
+
+            return View(paymenttype);
         }
 
         // GET: PaymentTypes/Details/5
