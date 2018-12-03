@@ -16,13 +16,12 @@ namespace Bangazon.Controllers
     public class ProductsController : Controller
     {
         private readonly ApplicationDbContext _context;
-        private readonly UserManager<ApplicationUser> _userManager;
 
         /* Represents user data */
         private readonly UserManager<ApplicationUser> _userManager;
 
         /* Retrieves the data for the current user from _userManager*/
-        private Task<ApplicationUser> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
+        private Task<ApplicationUser> CurrentUserAsync => _userManager.GetUserAsync(HttpContext.User);
 
         public ProductsController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
         {
@@ -94,7 +93,7 @@ namespace Bangazon.Controllers
 
             if (ModelState.IsValid)
             {
-                product.User = await GetCurrentUserAsync();
+                product.User = await CurrentUserAsync;
                 _context.Add(product);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Details), new { id = product.ProductId.ToString() });
@@ -231,7 +230,7 @@ namespace Bangazon.Controllers
             currentProduct.OrderId = currentOrder.OrderId;
             _context.Add(currentProduct);
             await _context.SaveChangesAsync();
-            return RedirectToAction("Index", "Products");
+            return RedirectToAction("Index", "Orders");
 
         }
 
