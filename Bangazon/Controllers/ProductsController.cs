@@ -9,6 +9,7 @@ using Bangazon.Data;
 using Bangazon.Models;
 using Bangazon.Models.ProductViewModels;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Bangazon.Controllers
 {
@@ -187,7 +188,8 @@ namespace Bangazon.Controllers
         {
             return _context.Product.Any(e => e.ProductId == id);
         }
-
+        //Authors: Dejan Stjepanovic and Helen Chalmers
+        [Authorize]
         public ActionResult SearchResults(string search)
         {
             return View(_context.Product.Where(x => x.Title.Contains(search) || search == null).ToList());
