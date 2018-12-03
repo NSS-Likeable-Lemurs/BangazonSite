@@ -11,7 +11,7 @@
     <ul class="nav navbar-nav navbar-right">
         <li>
             <a asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @UserManager.GetUserName(User)!</a>
-        </li> 
+        </li>
         <li>
             <button type="submit" class="btn btn-link navbar-btn navbar-link">Logout</button>
         </li>
@@ -19,6 +19,12 @@
     <ul class="nav navbar-nav navbar-left">
         <li><a asp-area="" asp-controller="Products" asp-action="Create">Sell A Product</a></li>
     </ul>
+    @*<p>
+        @using (Html.BeginForm("SearchResults", "Products", FormMethod.Get))
+        {
+            @Html.TextBox("search") <input type="submit" value="Search" />
+        }
+    </p>*@
 </form>
 }
 else
