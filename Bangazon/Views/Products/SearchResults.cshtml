@@ -1,0 +1,30 @@
+﻿@model IEnumerable<Bangazon.Models.Product>
+
+@{
+    ViewData["Title"] = "SearchResults";
+}
+
+<h2>SearchResults</h2>
+@* 
+    Authors: Dejan Stjepanovic and Helen Chalmers
+    View: this is a view fo rthe list of products that comes up when the search bar is entered.
+*@
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

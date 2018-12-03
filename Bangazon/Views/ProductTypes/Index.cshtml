@@ -24,8 +24,8 @@
     // First table row
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.TypeName)
-            </td>
+                <a asp-action="Details" asp-route-id="@item.TypeId"> @Html.DisplayFor(modelItem => item.TypeName)</a>
+</td>
             
             <td>
                 <strong> @Html.DisplayFor(modelItem => item.ProductCount)</strong>
@@ -40,7 +40,7 @@
                 <tr>
                 <td>
                     <ul>
-                        <li style="display: flex; justify-content:center;"> <a asp-action="Details" asp-route-id="@item.TypeId">   @Html.DisplayFor(modelItem => product.Title)</a> </li>
+                        <li style="display: flex; justify-content:center;"> <a asp-controller="Products" asp-action="Details" asp-route-id="@item.TypeId">   @Html.DisplayFor(modelItem => product.Title)</a> </li>
                     </ul>
                 </td>
                     </tr>
