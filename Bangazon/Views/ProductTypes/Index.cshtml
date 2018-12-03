@@ -1,7 +1,7 @@
-﻿@model IEnumerable<Bangazon.Models.ProductType>
+﻿@model Bangazon.Models.ProductViewModels.ProductTypeViewModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Product Types";
 }
 
 <h2>Product Types</h2>
@@ -13,20 +13,41 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Label)
+             <a href="@Html.DisplayNameFor(model => model.GroupedProducts)"   ></a>
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-         @*created a for each loop below that creates a hyperlink for all ProductTypes and leads to the details page of each productTypeID*@
-@foreach (var item in Model) {
+  @* Foreach loop to go through the GP model and return name and count *@
+@foreach (var item in Model.GroupedProducts) {
+    // First table row
         <tr>
             <td>
-                <a asp-action="Details" asp-route-id="@item.ProductTypeId">@Html.DisplayFor(modelItem => item.Label)</a>
+                @Html.DisplayFor(modelItem => item.TypeName)
             </td>
-          
+            
+            <td>
+                <strong> @Html.DisplayFor(modelItem => item.ProductCount)</strong>
+            </td>
+            <p style="display: flex; justify-content:center;">
         </tr>
+        // Second table row
+        // Foreach loop to loop through the Product list inside of GP model
+        <tr>
+            @foreach (Product product in item.Products)
+            {
+                <tr>
+                <td>
+                    <ul>
+                        <li style="display: flex; justify-content:center;"> <a asp-action="Details" asp-route-id="@item.TypeId">   @Html.DisplayFor(modelItem => product.Title)</a> </li>
+                    </ul>
+                </td>
+                    </tr>
+            }
+        </tr>
+
+
 }
     </tbody>
 </table>
