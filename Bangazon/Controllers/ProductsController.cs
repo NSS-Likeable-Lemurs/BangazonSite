@@ -10,6 +10,7 @@ using Bangazon.Models;
 using Microsoft.AspNetCore.Authorization;
 using Bangazon.Models.ProductViewModels;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Bangazon.Controllers
 {
@@ -231,7 +232,14 @@ namespace Bangazon.Controllers
             _context.Add(currentProduct);
             await _context.SaveChangesAsync();
             return RedirectToAction("Index", "Orders");
-
+        }
+        
+        //Authors: Dejan Stjepanovic and Helen Chalmers
+        [Authorize]
+        public ActionResult SearchResults(string search)
+        {
+            return View(_context.Product.Where(x => x.Title.Contains(search) || search == null).ToList());
         }
     }
 }
+ 
