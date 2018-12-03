@@ -34,8 +34,10 @@ namespace Bangazon.Models
     [Required]
     public string UserId {get; set;}
 
+    [Required]
     public string City {get; set;}
 
+    [Required]
     public string ImagePath {get; set;}
 
     [Required]
