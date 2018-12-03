@@ -49,7 +49,10 @@
             <div class="form-group">
                 <label asp-for="ProductTypeId" class="control-label"></label>
                 <select asp-for="ProductTypeId" class="form-control" asp-items="ViewBag.ProductTypeId">
-                <option disabled selected> --- SELECT ---</option></select>
+                <!-- The "disabled" means that this option cannot be selected. It is like a blank selection. If you attempt to click "list item"
+                and nothing has been selected then you will be thrown a response asking for something to be selected -->
+                    <option disabled selected> --- SELECT ---</option>
+                </select>
                 <span asp-validation-for="ProductTypeId" class="text-danger"></span>
             </div>
             <div class="form-group">
