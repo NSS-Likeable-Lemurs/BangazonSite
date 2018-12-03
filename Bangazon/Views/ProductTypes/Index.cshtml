@@ -31,13 +31,6 @@
                 <strong> @Html.DisplayFor(modelItem => item.ProductCount)</strong>
             </td>
             <p style="display: flex; justify-content:center;">
-         @*created a for each loop below that creates a hyperlink for all ProductTypes and leads to the details page of each productTypeID*@
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                <a asp-action="Details" asp-route-id="@item.ProductTypeId">@Html.DisplayFor(modelItem => item.Label)</a>
-            </td>
-          
         </tr>
         // Second table row
         // Foreach loop to loop through the Product list inside of GP model
