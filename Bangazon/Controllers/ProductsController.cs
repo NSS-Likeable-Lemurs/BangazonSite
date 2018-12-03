@@ -7,17 +7,27 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Bangazon.Data;
 using Bangazon.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace Bangazon.Controllers
 {
     public class ProductsController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public ProductsController(ApplicationDbContext context)
+        public ProductsController(ApplicationDbContext ctx,
+                          UserManager<ApplicationUser> userManager)
         {
-            _context = context;
+            _userManager = userManager;
+            _context = ctx;
         }
+
+        private Task<ApplicationUser> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
+
+
+
 
         // GET: Products
         public async Task<IActionResult> Index()
@@ -162,5 +172,129 @@ namespace Bangazon.Controllers
         {
             return _context.Product.Any(e => e.ProductId == id);
         }
+
+
+        [Authorize]
+        public async Task<IActionResult> AddToOrder([FromRoute] int id)
+        {
+            // Find the product requested
+            Product productToAdd = await _context.Product.SingleOrDefaultAsync(p => p.ProductId == id);
+
+            // Get the current user
+            var user = await GetCurrentUserAsync();
+
+            // See if the user has an open order
+            var openOrder = await _context.Order.SingleOrDefaultAsync(o => o.User == user && o.PaymentTypeId == null);
+
+
+            // If no order, create one, else add to existing order
+            Order currentOrder;
+
+            if (openOrder == null)
+            {
+                currentOrder = new Order();
+                currentOrder.UserId = user.Id;
+                currentOrder.PaymentTypeId = null;
+                _context.Add(currentOrder);
+                await _context.SaveChangesAsync();
+            }
+
+            else
+            {
+                currentOrder = openOrder;
+            }
+
+            OrderProduct currentProduct = new OrderProduct();
+            currentProduct.ProductId = id;
+            currentProduct.OrderId = currentOrder.OrderId;
+            _context.Add(currentProduct);
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Index", "Products");
+
+        }
+
+
+
+
+
+
+        //currentOrder = new Order();
+        //currentOrder.UserId = user.Id;
+        //        currentOrder.PaymentTypeId = null;
+        //        _context.Add(currentOrder);
+        //        await _context.SaveChangesAsync();
+
+
+
+        //OrderProduct currentProduct = new OrderProduct();
+        //currentProduct.ProductId = id;
+        //    currentProduct.OrderId = currentOrder.OrderId;
+        //    _context.Add(currentProduct);
+        //    await _context.SaveChangesAsync();
+        //    return RedirectToAction("Index", "Products");
+
+
+
+
+
+
+
+        //OrderProduct newOrderedProduct = new OrderProduct()
+        //{
+        //    OrderId = openOrder.OrderId,
+        //    ProductId = id
+        //};
+
+
+        //OrderProduct currentProduct = new OrderProduct();
+        //_context.Add(currentProduct);
+        //    await _context.SaveChangesAsync();
+        //    return RedirectToAction("Index", "Orders");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //currentProduct.ProductId = id;
+        //    currentProduct.Orderid = currentOrder.OrderId;
+
+
+
+
+
+
+        //public async Task<IActionResult> AddToOrder([FromRoute] int id)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        ApplicationUser currentUser = await GetCurrentUserAsync();
+
+        //        Order activeOrder = await _context.Order.Where(o => (o.UserId == currentUser.Id) && (o.PaymentTypeId == null)).FirstOrDefaultAsync();
+
+        //        if (activeOrder != null)
+        //        {
+        //            OrderProduct newOrderedProduct = new OrderProduct()
+        //            {
+        //                OrderId = activeOrder.OrderId,
+        //                ProductId = product.ProductId
+        //            };
+
+        //            _context.Add(newOrderedProduct);
+        //            await _context.SaveChangesAsync();
+        //            return RedirectToAction(nameof(Index));
+        //        }
+        //    }
+        //    return View(product);
+        //}
     }
 }
