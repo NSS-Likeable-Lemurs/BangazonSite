@@ -36,6 +36,14 @@
                 </ul>
                 <partial name="_LoginPartial" />
             </div>
+                
+                <p>
+                    @using (Html.BeginForm("SearchResults", "Products", FormMethod.Get))
+                    {
+                        @Html.TextBox("search") <input type="submit" value="Search" />
+                    }
+                </p>
+            
         </div>
     </nav>
 

@@ -162,5 +162,11 @@ namespace Bangazon.Controllers
         {
             return _context.Product.Any(e => e.ProductId == id);
         }
+
+        public ActionResult SearchResults(string search)
+        {
+            return View(_context.Product.Where(x => x.Title.Contains(search) || search == null).ToList());
+        }
     }
 }
+ 
