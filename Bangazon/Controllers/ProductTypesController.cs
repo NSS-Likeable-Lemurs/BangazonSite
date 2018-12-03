@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Bangazon.Data;
 using Bangazon.Models;
+using Bangazon.Models.ProductViewModels;
 
 namespace Bangazon.Controllers
 {
@@ -22,7 +23,23 @@ namespace Bangazon.Controllers
         // GET: ProductTypes
         public async Task<IActionResult> Index()
         {
-            return View(await _context.ProductType.ToListAsync());
+            var model = new ProductTypeViewModel();
+            // Build list of Product instances for display in view
+            model.GroupedProducts = await (
+        from t in _context.ProductType
+        join p in _context.Product
+        on t.ProductTypeId equals p.ProductTypeId
+        group new { t, p } by new { t.ProductTypeId, t.Label } into grouped
+        select new GroupedProducts
+        {
+            TypeId = grouped.Key.ProductTypeId,
+            TypeName = grouped.Key.Label,
+            ProductCount = grouped.Select(x => x.p.ProductId).Count(),
+            Products = grouped.Select(x => x.p).Take(3)
+        }).ToListAsync();
+
+
+            return View(model);
         }
 
         // GET: ProductTypes/Details/5
@@ -32,8 +49,9 @@ namespace Bangazon.Controllers
             {
                 return NotFound();
             }
-
+        // Under productType .Include Products so that It will be included in the details page.
             var productType = await _context.ProductType
+                .Include(p => p.Products)
                 .FirstOrDefaultAsync(m => m.ProductTypeId == id);
             if (productType == null)
             {
