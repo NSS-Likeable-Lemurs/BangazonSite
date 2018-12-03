@@ -21,6 +21,7 @@ namespace Bangazon.Models
 
     [Required]
     [StringLength(55, ErrorMessage="Please shorten the product title to 55 characters")]
+    [Display(Name = "Title")]
     public string Title { get; set; }
 
     [Required]
@@ -33,8 +34,10 @@ namespace Bangazon.Models
     [Required]
     public string UserId {get; set;}
 
+    [Required]
     public string City {get; set;}
 
+    [Required]
     public string ImagePath {get; set;}
 
     [Required]

@@ -106,7 +106,9 @@ namespace Bangazon.Data {
                         Description = "It flies high",
                         Title = "Kite",
                         Quantity = 100,
-                        Price = 2.99
+                        Price = 2.99,
+                        City="Franklin",
+                        ImagePath="www.google.com"
                 },
                 new Product () {
                     ProductId = 2,
@@ -115,7 +117,9 @@ namespace Bangazon.Data {
                         Description = "It rolls fast",
                         Title = "Wheelbarrow",
                         Quantity = 5,
-                        Price = 29.99
+                        Price = 29.99,
+                        City = "Nashville",
+                        ImagePath = "www.google.com"
                 },
                 new Product()
                 {
@@ -125,7 +129,9 @@ namespace Bangazon.Data {
                     Description = "Black- not much RAM",
                     Title = "MacBook Air",
                     Quantity = 5,
-                    Price = 1200.00
+                    Price = 1200.00,
+                    City = "Nashville",
+                    ImagePath = "www.google.com"
                 },
 
                 new Product()
@@ -136,7 +142,9 @@ namespace Bangazon.Data {
                     Description = "White TON OF RAM",
                     Title = "MacBook Pro",
                     Quantity = 5,
-                    Price = 2000.00
+                    Price = 2000.00,
+                    City = "Nashville",
+                    ImagePath = "www.google.com"
                 },
                 new Product()
                 {
@@ -146,7 +154,9 @@ namespace Bangazon.Data {
                     Description = "Black - Cute",
                     Title = "Dell",
                     Quantity = 5,
-                    Price = 1000.00
+                    Price = 1000.00,
+                    City = "Nashville",
+                    ImagePath = "www.google.com"
                 },
                 new Product()
                 {
@@ -156,7 +166,9 @@ namespace Bangazon.Data {
                     Description = "Orange",
                     Title = "Linux",
                     Quantity = 5,
-                    Price = 500.00
+                    Price = 500.00,
+                    City = "Nashville",
+                    ImagePath = "www.google.com"
                 },
                 new Product()
                 {
@@ -166,7 +178,9 @@ namespace Bangazon.Data {
                     Description = "Not much RAM",
                     Title = "HP",
                     Quantity = 5,
-                    Price = 300.00
+                    Price = 300.00,
+                    City = "Nashville",
+                    ImagePath = "www.google.com"
                 },
                 new Product()
                 {
@@ -176,7 +190,9 @@ namespace Bangazon.Data {
                     Description = "Chocolate",
                     Title = "Protein Powder - Chocolate",
                     Quantity = 5,
-                    Price = 29.99
+                    Price = 29.99,
+                    City = "Nashville",
+                    ImagePath = "www.google.com"
                 },
                 new Product()
                 {
@@ -186,7 +202,9 @@ namespace Bangazon.Data {
                     Description = "Vanilla",
                     Title = "Protein Powder - Vanilla",
                     Quantity = 5,
-                    Price = 29.99
+                    Price = 29.99,
+                    City = "Nashville",
+                    ImagePath = "www.google.com"
                 },
                 new Product()
                 {
@@ -196,7 +214,9 @@ namespace Bangazon.Data {
                     Description = "Grape",
                     Title = "Protein Powder- Grape ",
                     Quantity = 5,
-                    Price = 29.99
+                    Price = 29.99,
+                    City = "Nashville",
+                    ImagePath = "www.google.com"
                 },
                 new Product()
                 {
@@ -206,7 +226,9 @@ namespace Bangazon.Data {
                     Description = "Strawberry",
                     Title = "Protein Powder - Strawberry",
                     Quantity = 5,
-                    Price = 29.99
+                    Price = 29.99,
+                    City = "Franklin",
+                    ImagePath = "www.google.com"
                 },
                 new Product()
                 {
@@ -216,7 +238,9 @@ namespace Bangazon.Data {
                     Description = "Black",
                     Title = "Yoga Pants - Black",
                     Quantity = 5,
-                    Price = 29.99
+                    Price = 29.99,
+                    City = "Franklin",
+                    ImagePath = "www.google.com"
                 }, 
                 new Product()
                 {
@@ -226,7 +250,9 @@ namespace Bangazon.Data {
                     Description = "White",
                     Title = "Yoga Pants - White",
                     Quantity = 5,
-                    Price = 29.99
+                    Price = 29.99,
+                    City = "Franklin",
+                    ImagePath = "www.google.com"
                 },
                 new Product()
                 {
@@ -236,7 +262,9 @@ namespace Bangazon.Data {
                     Description = "Red",
                     Title = "Yoga Pants - REd",
                     Quantity = 5,
-                    Price = 29.99
+                    Price = 29.99,
+                    City = "Franklin",
+                    ImagePath = "www.google.com"
                 },
                 new Product()
                 {
@@ -246,7 +274,9 @@ namespace Bangazon.Data {
                     Description = "Green",
                     Title = "Yoga Pants - Green",
                     Quantity = 5,
-                    Price = 29.99
+                    Price = 29.99,
+                    City = "Franklin",
+                    ImagePath = "www.google.com"
                 },
                 new Product()
                 {
@@ -256,7 +286,9 @@ namespace Bangazon.Data {
                     Description = "Purple",
                     Title = "Yoga Pants - Purple",
                     Quantity = 5,
-                    Price = 29.99
+                    Price = 29.99,
+                    City = "Franklin",
+                    ImagePath = "www.google.com"
                 },
                 new Product()
                 {
@@ -266,7 +298,9 @@ namespace Bangazon.Data {
                     Description = "5 lb",
                     Title = "Weights -5lb",
                     Quantity = 5,
-                    Price = 29.99
+                    Price = 29.99,
+                    City = "Franklin",
+                    ImagePath = "www.google.com"
                 },
                 new Product()
                 {
@@ -276,7 +310,9 @@ namespace Bangazon.Data {
                     Description = "10 lb",
                     Title = "Weights -10 lb",
                     Quantity = 5,
-                    Price = 29.99
+                    Price = 29.99,
+                    City = "Franklin",
+                    ImagePath = "www.google.com"
                 },
                 new Product()
                 {
@@ -286,7 +322,9 @@ namespace Bangazon.Data {
                     Description = "15 lb",
                     Title = "Weights -15 lb",
                     Quantity = 5,
-                    Price = 29.99
+                    Price = 29.99,
+                    City = "Franklin",
+                    ImagePath = "www.google.com"
                 },
                 new Product()
                 {
@@ -296,7 +334,9 @@ namespace Bangazon.Data {
                     Description = "8 lb",
                     Title = "Weights -8 lb",
                     Quantity = 5,
-                    Price = 29.99
+                    Price = 29.99,
+                    City = "Franklin",
+                    ImagePath = "www.google.com"
                 },
                 new Product()
                 {
@@ -306,7 +346,9 @@ namespace Bangazon.Data {
                     Description = "20 lb",
                     Title = "Weights -20lb",
                     Quantity = 5,
-                    Price = 29.99
+                    Price = 29.99,
+                    City = "Cinci",
+                    ImagePath = "www.google.com"
                 },
                 new Product()
                 {
@@ -316,7 +358,9 @@ namespace Bangazon.Data {
                     Description = "25 lb",
                     Title = "Weights -25 lb",
                     Quantity = 5,
-                    Price = 29.99
+                    Price = 29.99,
+                    City = "Cinci",
+                    ImagePath = "www.google.com"
                 },
                 new Product()
                 {
@@ -326,7 +370,9 @@ namespace Bangazon.Data {
                     Description = "round and yellow",
                     Title = "Tennis Ball",
                     Quantity = 5,
-                    Price = 29.99
+                    Price = 29.99,
+                    City = "Cinci",
+                    ImagePath = "www.google.com"
                 },
                 new Product()
                 {
@@ -336,7 +382,9 @@ namespace Bangazon.Data {
                     Description = "Sleek",
                     Title = "Babolat Tennis Racket",
                     Quantity = 5,
-                    Price = 29.99
+                    Price = 29.99,
+                    City = "Cinci",
+                    ImagePath = "www.google.com"
                 },
                 new Product()
                 {
@@ -346,7 +394,9 @@ namespace Bangazon.Data {
                     Description = "Rounded",
                     Title = "Wilson Tennis Racket",
                     Quantity = 5,
-                    Price = 29.99
+                    Price = 29.99,
+                    City = "Cinci",
+                    ImagePath = "www.google.com"
                 }
 
 
