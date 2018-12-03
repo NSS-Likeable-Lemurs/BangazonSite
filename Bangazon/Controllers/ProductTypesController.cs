@@ -25,7 +25,6 @@ namespace Bangazon.Controllers
         {
             var model = new ProductTypeViewModel();
             // Build list of Product instances for display in view
-            // LINQ is awesome
             model.GroupedProducts = await (
         from t in _context.ProductType
         join p in _context.Product
@@ -50,7 +49,7 @@ namespace Bangazon.Controllers
             {
                 return NotFound();
             }
- // Under productType .Include Products so that It will be included in the details page.
+        // Under productType .Include Products so that It will be included in the details page.
             var productType = await _context.ProductType
                 .Include(p => p.Products)
                 .FirstOrDefaultAsync(m => m.ProductTypeId == id);
