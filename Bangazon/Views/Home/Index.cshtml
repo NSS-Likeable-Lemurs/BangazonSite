@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<Bangazon.Models.Product>
+
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -19,7 +20,7 @@
         {
             <tr>
                 <td>
-                    <a asp-action="Detail" asp-route-id="@item.Title">@Html.DisplayFor(modelItem => item.Title)</a>
+                    <a asp-controller="Products" asp-action="Details" asp-route-id="@item.ProductId">@Html.DisplayFor(modelItem => item.Title)</a>
                 </td>
             </tr>
         }

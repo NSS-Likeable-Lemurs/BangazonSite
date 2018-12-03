@@ -28,7 +28,7 @@
     {
         
             <div class="col-md-4">
-                <a asp-action="Details" asp-route-id="@item.ProductId">@Html.DisplayFor(modelItem => item.Title)</a>
+                <a asp-controller="Products" asp-action="Details" asp-route-id="@item.ProductId">@Html.DisplayFor(modelItem => item.Title)</a>
             </div>
             <div class="col-md-4">
                 @Html.DisplayFor(modelItem => item.Quantity)

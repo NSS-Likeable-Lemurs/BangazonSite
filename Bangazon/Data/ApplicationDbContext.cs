@@ -84,18 +84,7 @@ namespace Bangazon.Data {
                 new ProductType () {
                     ProductTypeId = 2,
                         Label = "Appliances"
-                },
-                new ProductType()
-                {
-                    ProductTypeId = 3,
-                    Label = "Electronics"
-                },
-                new ProductType()
-                {
-                    ProductTypeId = 4,
-                    Label = "Health"
                 }
-
             );
 
             modelBuilder.Entity<Product> ().HasData (
@@ -398,9 +387,8 @@ namespace Bangazon.Data {
                     City = "Cinci",
                     ImagePath = "www.google.com"
                 }
+            );
 
-
-             );
             modelBuilder.Entity<Order> ().HasData (
                 new Order () {
                     OrderId = 1,

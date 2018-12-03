@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Bangazon.Data;
 using Bangazon.Models;
+using Microsoft.AspNetCore.Authorization;
 using Bangazon.Models.ProductViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authorization;
@@ -28,6 +29,11 @@ namespace Bangazon.Controllers
             _userManager = userManager;
             _context = context;
         }
+
+        
+
+
+
 
         // GET: Products
         public async Task<IActionResult> Index()
@@ -188,6 +194,46 @@ namespace Bangazon.Controllers
         {
             return _context.Product.Any(e => e.ProductId == id);
         }
+
+
+        [Authorize]
+        public async Task<IActionResult> AddToOrder([FromRoute] int id)
+        {
+            // Find the product requested
+            Product productToAdd = await _context.Product.SingleOrDefaultAsync(p => p.ProductId == id);
+
+            // Get the current user
+            var user = await GetCurrentUserAsync();
+
+            // See if the user has an open order
+            var openOrder = await _context.Order.SingleOrDefaultAsync(o => o.User == user && o.PaymentTypeId == null);
+
+
+            // If no order, create one, else add to existing order
+            Order currentOrder;
+
+            if (openOrder == null)
+            {
+                currentOrder = new Order();
+                currentOrder.UserId = user.Id;
+                currentOrder.PaymentTypeId = null;
+                _context.Add(currentOrder);
+                await _context.SaveChangesAsync();
+            }
+
+            else
+            {
+                currentOrder = openOrder;
+            }
+
+            OrderProduct currentProduct = new OrderProduct();
+            currentProduct.ProductId = id;
+            currentProduct.OrderId = currentOrder.OrderId;
+            _context.Add(currentProduct);
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Index", "Orders");
+        }
+        
         //Authors: Dejan Stjepanovic and Helen Chalmers
         [Authorize]
         public ActionResult SearchResults(string search)
