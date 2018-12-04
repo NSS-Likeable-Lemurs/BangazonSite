@@ -26,7 +26,7 @@ namespace Bangazon.Models
     public string Title { get; set; }
 
     [Required]
-    [Range(0.01, 10000, ErrorMessage = "Please list a product for no more than $10,000"), DataType(DataType.Currency) ]
+    [Range(0.001, 10000, ErrorMessage = "Please list a product for no more than $10,000"), DataType(DataType.Currency) ]
     [DisplayFormat(DataFormatString = "{0:C}")]
     public double Price { get; set; }
 
