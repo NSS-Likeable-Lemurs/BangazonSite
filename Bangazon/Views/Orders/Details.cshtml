@@ -28,15 +28,22 @@
         <dd>
             @Html.DisplayFor(model => model.PaymentType.AccountNumber)
         </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.OrderProducts)
-        </dt>
+
         <dd>
-            @Html.DisplayFor(model => model.OrderProducts)
+            @Html.DisplayNameFor(model => model.OrderProducts)
         </dd>
+
+        @foreach (OrderProduct orderProduct in Model.OrderProducts)
+        {
+         
+            <div>
+                <a asp-controller="Products" asp-action="Details" asp-route-id="@orderProduct.ProductId">@Html.DisplayFor(modelItem => orderProduct.Product.Title)</a>
+            </div>
+        }
     </dl>
-</div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model.OrderId">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>
+</div>
+

@@ -66,8 +66,10 @@ namespace Bangazon.Controllers
             }
 
             var product = await _context.Product
-                .Include(p => p.ProductType)
                 .Include(p => p.User)
+                .Include(p => p.ProductType)
+                 .Include(p => p.OrderProducts)
+
                 .FirstOrDefaultAsync(m => m.ProductId == id);
             if (product == null)
             {

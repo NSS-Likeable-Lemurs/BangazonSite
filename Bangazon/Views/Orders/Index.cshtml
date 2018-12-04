@@ -21,9 +21,6 @@
             <th>
                 @Html.DisplayNameFor(model => model.PaymentType)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OrderProducts)
-            </th>
             <th></th>
         </tr>
     </thead>
@@ -38,9 +35,6 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.PaymentType.AccountNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.OrderProducts)
             </td>
             <td>
                 <a asp-action="Details" asp-route-id="@item.OrderId">Details</a> |
