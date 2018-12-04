@@ -4,7 +4,7 @@
     ViewData["Title"] = "Index";
 }
 
-<h2>Index</h2>
+<h2>Cart</h2>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -28,25 +28,27 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateCreated)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateCompleted)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PaymentType.AccountNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.OrderProducts)
-            </td>
-            <td>
-                <a asp-action="Details" asp-route-id="@item.OrderId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.OrderId">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateCreated)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateCompleted)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PaymentType.AccountNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OrderProducts)
+                </td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.OrderId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.OrderId">Delete</a>
+                </td>
+            </tr>
+          }
     </tbody>
 </table>
+<input type="button" name="button" class="button1" value="Complete Order" />
