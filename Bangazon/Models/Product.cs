@@ -17,7 +17,7 @@ namespace Bangazon.Models
 
     [Required]
     [StringLength(255)]
-    [RegularExpression(@"[A-Za-z0-9`~ ]*", ErrorMessage = "Please refrain from using the following characters !@#$%^&*().")]
+    [RegularExpression(@"[A-Za-z0-9`~ ]*", ErrorMessage = "Please refrain from using the following characters !@#$%^&*()")]
     public string Description { get; set; }
 
     [Required]
