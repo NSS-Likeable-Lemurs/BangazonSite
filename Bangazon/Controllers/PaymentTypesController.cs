@@ -79,13 +79,18 @@ namespace Bangazon.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("PaymentTypeId,DateCreated,Description,AccountNumber,UserId")] PaymentType paymentType)
         {
+            ModelState.Remove("DateCreated");
+            ModelState.Remove("User");
+            ModelState.Remove("UserId");
+            ModelState.Remove("PaymentTypeId");
             if (ModelState.IsValid)
             {
                 _context.Add(paymentType);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["UserId"] = new SelectList(_context.ApplicationUsers, "Id", "Id", paymentType.UserId);
+            ViewData["PaymentTypeId"] = new SelectList(_context.ApplicationUsers, "PaymentTypeId", "Description", paymentType.UserId);
+
             return View(paymentType);
         }
 
