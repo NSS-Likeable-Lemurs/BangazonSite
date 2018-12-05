@@ -7,15 +7,21 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Bangazon.Data;
 using Bangazon.Models;
+using Microsoft.AspNetCore.Identity;
+using Bangazon.Models.PaymentTypeViewModel;
+
 
 namespace Bangazon.Controllers
 {
     public class OrdersController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<ApplicationUser> _userManager;
+        private Task<ApplicationUser> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
 
-        public OrdersController(ApplicationDbContext context)
+        public OrdersController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
         {
+            _userManager = userManager;
             _context = context;
         }
 
@@ -46,6 +52,20 @@ namespace Bangazon.Controllers
             }
 
             return View(order);
+        }
+
+        // GET: Orders/Checkout
+        public async Task<IActionResult> Checkout(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var currentUser = await GetCurrentUserAsync();
+            List<PaymentType> paymentTypes = _context.PaymentType.Where(pt=>pt.UserId == currentUser.Id).ToList();
+            PaymentTypeViewModel model = new PaymentTypeViewModel(paymentTypes);
+
+            return View(model);
         }
 
         // GET: Orders/Create

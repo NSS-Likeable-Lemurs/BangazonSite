@@ -46,8 +46,8 @@ namespace Bangazon.Controllers
             return View(paymenttype);
         }
 
-        // GET: PaymentTypes/Details/5
-        public async Task<IActionResult> Details(int? id)
+        // GET: PaymentTypes/Checkout
+        public async Task<IActionResult> Checkout(int? id)
         {
             if (id == null)
             {
