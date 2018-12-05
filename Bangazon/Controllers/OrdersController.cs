@@ -140,6 +140,7 @@ namespace Bangazon.Controllers
             var order = await _context.Order
                 .Include(o => o.PaymentType)
                 .Include(o => o.User)
+                .Include(o => o.OrderProducts)
                 .FirstOrDefaultAsync(m => m.OrderId == id);
             if (order == null)
             {
@@ -163,6 +164,32 @@ namespace Bangazon.Controllers
         private bool OrderExists(int id)
         {
             return _context.Order.Any(e => e.OrderId == id);
+        }
+
+
+
+        public async Task<IActionResult> DeleteFromCart(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var orderproduct = await _context.OrderProduct
+                .Include(op => op.Order)
+                .Include(op => op.Product)
+                .FirstOrDefaultAsync(m => m.OrderProductId == id);
+
+            return View(orderproduct);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> DeleteFromCartConfirmed(OrderProduct op)
+        {
+            var orderproduct = await _context.OrderProduct.FindAsync(op.OrderProductId);
+            _context.OrderProduct.Remove(orderproduct);
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Details", new {id=orderproduct.OrderId});
         }
     }
 }
