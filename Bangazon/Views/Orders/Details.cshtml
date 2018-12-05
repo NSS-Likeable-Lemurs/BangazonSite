@@ -36,9 +36,11 @@
         @foreach (OrderProduct orderProduct in Model.OrderProducts)
         {
          
-            <div>
-                <a asp-controller="Products" asp-action="Details" asp-route-id="@orderProduct.ProductId">@Html.DisplayFor(modelItem => orderProduct.Product.Title)</a>
-            </div>
+        <div>
+            <a asp-controller="Products" asp-action="Details" asp-route-id="@orderProduct.ProductId">@Html.DisplayFor(modelItem => orderProduct.Product.Title)</a> |
+            <a asp-action="DeleteFromCart" asp-controller="Orders" asp-route-id="@orderProduct.OrderProductId">Delete</a>
+        </div>
+
         }
     </dl>
     <div>
