@@ -25,6 +25,7 @@ namespace Bangazon.Controllers
             _context = context;
         }
 
+
         // GET: Orders
         public async Task<IActionResult> Index()
         {
@@ -211,5 +212,64 @@ namespace Bangazon.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction("Details", new {id=orderproduct.OrderId});
         }
+
+        //update the payment type of order
+        
+        public async Task<IActionResult> CompleteOrder (PaymentTypeViewModel model)
+        {
+            if (model.PaymentType.PaymentTypeId == 0)
+            {
+                return NotFound();
+            }
+            var user = await GetCurrentUserAsync();
+
+
+
+            Order currentOrder = _context.Order
+               .Include(o => o.User)
+                .Include(o => o.PaymentType)
+                .Where(o => o.UserId == user.Id)
+                .Where(o => o.PaymentType == null).ToList().FirstOrDefault();
+
+            if(currentOrder != null)
+            {
+                currentOrder.PaymentTypeId = model.PaymentType.PaymentTypeId;
+                _context.Update(currentOrder);
+                await _context.SaveChangesAsync();
+            }
+            return RedirectToAction("Index", "Orders");
+        }
+
+//        [HttpPost]
+//        [ValidateAntiForgeryToken]
+//        public async Task<IActionResult> CompleteOrder(int id, [Bind("OrderId,PaymentTypeId")] Order order)
+//        {
+//            if (id != order.OrderId)
+//            {
+//                return NotFound();
+//            }
+//            if (ModelState.IsValid)
+//            {
+//                try
+//                {
+//                    _context.Update(order);
+//                    await _context.SaveChangesAsync();
+//    }
+//                catch (DbUpdateConcurrencyException)
+//                {
+//                    if (!OrderExists(order.OrderId))
+//                    {
+//                        return NotFound();
+//}
+//                    else
+//                    {
+//                        throw;
+//                    }
+//                }
+//                return RedirectToAction(nameof(Index));
+//            }
+        //    ViewData["PaymentTypeId"] = new SelectList(_context.PaymentType, "PaymentTypeId", "Description", order.PaymentTypeId);
+        //    return View(order);
+        //}
     }
 }
