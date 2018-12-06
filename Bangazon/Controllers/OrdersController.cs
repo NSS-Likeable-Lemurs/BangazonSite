@@ -237,37 +237,37 @@ namespace Bangazon.Controllers
                 _context.Update(currentOrder);
                 await _context.SaveChangesAsync();
             }
-            return RedirectToAction("Index", "Orders");
+            return View();
         }
 
-//        [HttpPost]
-//        [ValidateAntiForgeryToken]
-//        public async Task<IActionResult> CompleteOrder(int id, [Bind("OrderId,PaymentTypeId")] Order order)
-//        {
-//            if (id != order.OrderId)
-//            {
-//                return NotFound();
-//            }
-//            if (ModelState.IsValid)
-//            {
-//                try
-//                {
-//                    _context.Update(order);
-//                    await _context.SaveChangesAsync();
-//    }
-//                catch (DbUpdateConcurrencyException)
-//                {
-//                    if (!OrderExists(order.OrderId))
-//                    {
-//                        return NotFound();
-//}
-//                    else
-//                    {
-//                        throw;
-//                    }
-//                }
-//                return RedirectToAction(nameof(Index));
-//            }
+        //        [HttpPost]
+        //        [ValidateAntiForgeryToken]
+        //        public async Task<IActionResult> CompleteOrder(int id, [Bind("OrderId,PaymentTypeId")] Order order)
+        //        {
+        //            if (id != order.OrderId)
+        //            {
+        //                return NotFound();
+        //            }
+        //            if (ModelState.IsValid)
+        //            {
+        //                try
+        //                {
+        //                    _context.Update(order);
+        //                    await _context.SaveChangesAsync();
+        //    }
+        //                catch (DbUpdateConcurrencyException)
+        //                {
+        //                    if (!OrderExists(order.OrderId))
+        //                    {
+        //                        return NotFound();
+        //}
+        //                    else
+        //                    {
+        //                        throw;
+        //                    }
+        //                }
+        //                return RedirectToAction(nameof(Index));
+        //            }
         //    ViewData["PaymentTypeId"] = new SelectList(_context.PaymentType, "PaymentTypeId", "Description", order.PaymentTypeId);
         //    return View(order);
         //}
