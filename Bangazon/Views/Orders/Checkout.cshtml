@@ -1,0 +1,24 @@
+﻿@model Bangazon.Models.PaymentTypeViewModel.PaymentTypeViewModel
+
+
+@{
+    ViewData["Title"] = "Checkout";
+}
+
+<h2>Checkout</h2>
+
+<table class="table">
+    <thead>
+        <form asp-controller="Orders" asp-action="CompleteOrder">
+            
+                <label asp-for="PaymentType.PaymentTypeId" class="control-label">Select Payment Type</label>
+                <select asp-for="PaymentType.PaymentTypeId" class="form-control" asp-items="@Model.PaymentTypeListItems">
+                    <option disabled selected> --- SELECT ---</option>
+                </select>
+                <span asp-validation-for="PaymentType.PaymentTypeId" class="text-danger"></span>
+            
+                <input type="submit" value="Finalize Order" asp-controller="Orders" asp-action="CompleteOrder" />
+            
+        </form>
+    </thead>
+</table>

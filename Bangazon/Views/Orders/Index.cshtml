@@ -34,7 +34,7 @@
                 @Html.DisplayFor(modelItem => item.DateCompleted)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.PaymentType.AccountNumber)
+                @Html.DisplayFor(modelItem => item.PaymentType.Description)
             </td>
             <td>
                 <a asp-action="Details" asp-route-id="@item.OrderId">Details</a> |
@@ -44,4 +44,3 @@
 }
     </tbody>
 </table>
-<input type="button" name="button" class="button1" value="Complete Order" />

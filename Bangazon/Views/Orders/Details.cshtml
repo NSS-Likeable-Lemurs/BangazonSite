@@ -43,9 +43,10 @@
 
         }
     </dl>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.OrderId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model.OrderId">Edit</a> |
+        <a asp-action="Index">Back to List</a> |
+        <a asp-controller="Orders" asp-action="Checkout" asp-route-id="@Model.OrderId">Complete Order</a>
+    </div>
 </div>
 
